@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+	<title>vue</title>
+</head>
+<body>
+	
+	
+
+<div id="vc">
+	{{name}}
+	<span v-if="dis">condition show</span>
+	<span v-html="html"></span>
+	
+	<span v-bind:class="d"></span>
+
+	<p>{{num+1}}</p>
+
+
+	{{name|upperCase(1)}}
+
+	<p>{{list}}</p>
+
+	<a href="javascript:void(0)"  @click="add()">num++</a>
+	
+
+	<p>{{fullName|upperCase(100)}}</p>
+
+	<ul>
+		<li v-for="item in lists">
+			
+			{{item.id}}.{{item.name}}
+
+		</li>
+	</ul>
+
+	<my-component></my-component>
+
+
+	<input type="number" v-model:number="num">
+
+
+	<my-name ></my-name>
+
+	<add-buttoner v-bind:num="num" v-on:addevent="addHandler"></add-buttoner>
+
+	<my-age>
+		<div slot="header">header--didid</div>
+		<div slot="middle">middle--didid</div>
+		<div slot="footer">footer--didid</div>
+	</my-age>
+</div>
+
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<script type="text/javascript">
+
+	Vue.component('my-name',{
+
+		template:"<div>{{hh}}</div>",
+		data:function(){
+
+			return {hh:1}
+		}
+	})
+
+
+	Vue.component('add-buttoner',{
+
+		template:'<button v-on:click="clickHandler()"> add-- {{num}}</button>',
+		props:{
+			num:Number
+
+		},
+		methods:{
+
+			clickHandler:function(){
+				this.$emit("addevent")
+			}
+		}
+
+	})
+
+	Vue.component('my-age',{
+
+		template:`<div>
+			<slot name="header">Header</slot>
+			<slot name="middle">Middle</slot>
+			<slot name="footer">Footer</slot>
+		</div>`
+
+	})
+
+
+
+var vm=new Vue({
+
+	el:"#vc",
+	data:{
+		name:"vue",
+		dis:true,
+		html:`<b>hello</b>`,
+		d:"say",
+		num:1,
+		_list:["a","b","c","d","e"],
+
+		firstName:"Zheng",
+		lastName:"Qiangzi",
+		lists:(function(){
+			var p=[]
+			for(var i=0;i<5;i++){
+				p.push({id:i,name:"name"+i})
+			}
+
+			return p;
+		})()
+	},
+	methods:{
+		add:function(){
+
+			this.num++;
+			this.fullName="johnny.zheng"
+		},
+		addHandler:function(){
+
+			this.num++
+		}
+
+	},
+
+	watch:{
+
+		num:function(n,o){
+
+			this.name=this.name+n
+
+		}
+
+	},
+	computed:{
+
+		list:function(){
+			return this._data._list.join("-")
+		},
+		fullName:{
+
+			set:function(newvalue){
+
+				var g=newvalue.split(".");
+					this.firstName=g[0]
+					this.lastName=g[1]
+
+			},
+			get:function(){
+
+
+				return this.firstName+"."+this.lastName
+			}
+
+		}
+
+	},
+
+	components:{
+
+		'my-component':{
+
+			template:"<div>hello</div>"
+		}
+
+	},
+	filters:{
+		upperCase:function(letter,index){
+
+			return letter.toUpperCase().substring(0,index);
+		}
+	},
+	beforeCreate:function(){
+
+		console.log('beforeCreate')
+	},
+	created:function(){
+
+
+		console.log('created')
+	},
+	beforeMount:function(){
+		console.log('beforeMount')
+	},
+	mounted:function(){
+		console.log('mounted')
+
+	},
+	beforeUpdate:function(){
+
+		console.log('beforeUpdate')
+	},
+	updated:function(){
+
+		console.log('updated')
+	},
+	beforeDestroy:function(){
+		console.log('beforeDestroy')
+
+	},
+	destroyed:function(){
+
+		console.log('destroyed')
+	}
+
+})
+
+
+
+
+</script>
+</body>
+</html>
