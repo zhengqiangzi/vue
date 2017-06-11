@@ -55,10 +55,16 @@
 			
 
 		},
-		methods:mapMutations({
-			addUserHandler:"adduser"
+		methods:{
+			addUserHandler:function(){
 
-		})
+					this.$store.commit({type:"adduser",data:Object.assign({},this.user,{id:new Date().valueOf()})})
+					this.$router.go(-1)
+
+				}
+		
+
+		}
 
 		
 		

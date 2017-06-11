@@ -1,7 +1,13 @@
-window.$=window.jQuery=require("jquery")
-require("bootstrap")
+window.$=window.jQuery=require("jquery");
+
+require("bootstrap");
+
+import  VueRouter       from           'vue-router';
+import  { router}      from           './router';
+
 var Vue=require("vue")
-var Vuex=require("vuex")
+
+
 
 import { store } from './store';
 
@@ -11,6 +17,7 @@ var app = new Vue({
 
   el: '#app',
   store:store,
+  router:router,
   data:{
  
   },
@@ -24,8 +31,9 @@ var app = new Vue({
   methods:{
 
   
+  },
+  beforeCreate:function(){
+
+    this.$store.dispatch("loadServerData")
   }
-
-
-
 })
