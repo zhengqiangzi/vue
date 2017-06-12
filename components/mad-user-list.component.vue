@@ -79,8 +79,6 @@
     filters:{
 
       sex:function(v){
-
-        
         return v==1? '男':'女'
       }
     }

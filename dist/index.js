@@ -12762,7 +12762,7 @@ injectStyle,
 null,
 /* moduleIdentifier (server only) */
 null);
-Component.options.__file = "C:\\Users\\johnny\\Desktop\\vue\\vue\\components\\mad-user-add-form.component.vue";
+Component.options.__file = "C:\\Users\\Madhouse\\Desktop\\vue\\components\\mad-user-add-form.component.vue";
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {
   return key !== "default" && key.substr(0, 2) !== "__";
 })) {
@@ -12815,7 +12815,7 @@ injectStyle,
 null,
 /* moduleIdentifier (server only) */
 null);
-Component.options.__file = "C:\\Users\\johnny\\Desktop\\vue\\vue\\components\\mad-user-list.component.vue";
+Component.options.__file = "C:\\Users\\Madhouse\\Desktop\\vue\\components\\mad-user-list.component.vue";
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {
   return key !== "default" && key.substr(0, 2) !== "__";
 })) {
@@ -22724,7 +22724,7 @@ injectStyle,
 null,
 /* moduleIdentifier (server only) */
 null);
-Component.options.__file = "C:\\Users\\johnny\\Desktop\\vue\\vue\\components\\mad-container.component.vue";
+Component.options.__file = "C:\\Users\\Madhouse\\Desktop\\vue\\components\\mad-container.component.vue";
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {
   return key !== "default" && key.substr(0, 2) !== "__";
 })) {
@@ -22777,7 +22777,7 @@ injectStyle,
 null,
 /* moduleIdentifier (server only) */
 null);
-Component.options.__file = "C:\\Users\\johnny\\Desktop\\vue\\vue\\components\\mad-footer.component.vue";
+Component.options.__file = "C:\\Users\\Madhouse\\Desktop\\vue\\components\\mad-footer.component.vue";
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {
   return key !== "default" && key.substr(0, 2) !== "__";
 })) {
@@ -22830,7 +22830,7 @@ injectStyle,
 null,
 /* moduleIdentifier (server only) */
 null);
-Component.options.__file = "C:\\Users\\johnny\\Desktop\\vue\\vue\\components\\mad-header.component.vue";
+Component.options.__file = "C:\\Users\\Madhouse\\Desktop\\vue\\components\\mad-header.component.vue";
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {
   return key !== "default" && key.substr(0, 2) !== "__";
 })) {
@@ -23001,10 +23001,14 @@ var store = exports.store = new _vuex2.default.Store({
 			actions: {
 						loadServerData: function loadServerData(context) {
 
-									return $.get("./mockData/users.json").then(function (data) {
+									var promise = $.get("./mockData/users.json");
+
+									promise.then(function (data) {
 
 												context.commit({ type: "addServerData", data: data });
 									});
+
+									return promise;
 						}
 			}
 
@@ -34744,7 +34748,7 @@ injectStyle,
 null,
 /* moduleIdentifier (server only) */
 null);
-Component.options.__file = "C:\\Users\\johnny\\Desktop\\vue\\vue\\components\\mad-user.edit.vue";
+Component.options.__file = "C:\\Users\\Madhouse\\Desktop\\vue\\components\\mad-user.edit.vue";
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {
   return key !== "default" && key.substr(0, 2) !== "__";
 })) {
@@ -34850,7 +34854,7 @@ exports.default = {
 
 /***/ },
 /* 35 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
@@ -34858,35 +34862,8 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
+var _vuex = __webpack_require__(3);
 
 exports.default = {
 
@@ -34895,14 +34872,46 @@ exports.default = {
 		return {};
 	},
 	methods: {
-
+		/*	...mapActions({
+  		loadDataHandler:"loadServerData"
+  	})*/
 		loadDataHandler: function loadDataHandler() {
+			//$store.dispatch返回的是始终是一个Promise 即使你不直接返回一个Promise
+			this.$store.dispatch("loadServerData").then(function (data) {
 
-			this.$store.dispatch("loadServerData");
+				//console.log(data)
+			});
 		}
 	}
 
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ },
 /* 36 */
@@ -35025,7 +35034,6 @@ exports.default = {
   filters: {
 
     sex: function sex(v) {
-
       return v == 1 ? '男' : '女';
     }
   }
@@ -35150,8 +35158,7 @@ exports.default = {
   },
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
 
-    console.log(this
-
+    next(true
     /* this.$store.dispatch("loadServerData").then(function(){
         console.log(arguments);
      })*/
@@ -35218,7 +35225,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -35246,7 +35253,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -35260,7 +35267,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -35915,20 +35922,16 @@ var _store = __webpack_require__(18);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 window.$ = window.jQuery = __webpack_require__(13);
-
 __webpack_require__(12);
 
 var Vue = __webpack_require__(4);
-
 var app = new Vue({
 
   el: '#app',
   store: _store.store,
   router: _router.router,
   data: {},
-
   components: {
-
     "mad-header": __webpack_require__(16),
     "mad-container": __webpack_require__(14),
     "mad-footer": __webpack_require__(15)
@@ -35936,7 +35939,7 @@ var app = new Vue({
   methods: {},
   beforeCreate: function beforeCreate() {
 
-    this.$store.dispatch("loadServerData");
+    // this.$store.dispatch("loadServerData")
   }
 });
 

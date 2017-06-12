@@ -74,8 +74,7 @@ export default {
   },
   beforeRouteEnter:function(to,from,next){
 
-    console.log(this)
-
+      next(true)
       /* this.$store.dispatch("loadServerData").then(function(){
           console.log(arguments);
        })*/

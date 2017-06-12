@@ -91,10 +91,14 @@ Vue.use(Vuex)
 
 		loadServerData(context){
 
-			return $.get("./mockData/users.json").then(function(data){
+			var promise=$.get("./mockData/users.json")
+
+			promise.then(function(data){
 
 				context.commit({type:"addServerData",data:data})
 			})
+
+			return promise;
 
 		}
 	}

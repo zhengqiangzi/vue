@@ -27,7 +27,9 @@
 </template>
 
 <script>
-	
+
+import { mapActions } from 'vuex';
+
 export default	{
 
 	data:function(){
@@ -38,10 +40,15 @@ export default	{
 		}
 	},
 	methods:{
-
+	/*	...mapActions({
+			loadDataHandler:"loadServerData"
+		})*/
 		loadDataHandler:function(){
+			//$store.dispatch返回的是始终是一个Promise 即使你不直接返回一个Promise
+			this.$store.dispatch("loadServerData").then(function(data){
 
-			this.$store.dispatch("loadServerData")
+				//console.log(data)
+			})
 
 		}
 	}
