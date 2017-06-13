@@ -5,105 +5,138 @@ import _ from "lodash"
 
 Vue.use(Vuex)
 
- export const store=new Vuex.Store({
 
+var moduleA={
+
+	namespaced:true,
 	state:{
-
-		users:[
-
-		
-		],
-		currentUser:null,
-		editUser:null
-
-
+			num:1
 	},
 	mutations:{
 
-		adduser:function(state,data){
+		add:function(state){
+			//console.log('moduleA add()')
 
-				state.users.push(data.data)
+			++state.num
 		},
-		deleteUser:function(state,id){
+		subsc:function(state){
+			//console.log('moduleA subsc()')
 
-			var did=id.data.id
-
-			var index=_.findIndex(state.users,{id:did});
-
-			state.users.splice( index, 1 )
-
-			if( state.currentUser )
-			{
-				if( did==state.currentUser.id ){
-					state.currentUser=null
-				}
-			}
-
-
-
-
-
-		},
-		setCurrentUser:function(state,currentUser){
-
-			state.currentUser=Object.assign({},currentUser.data)
-		},
-		saveCurrentUser:function(state,data){
-
-			var index=_.findIndex(state.users,{id:data.data.id});
-
-			if(index<0){
-
-				return;
-			} 
-			state.users.splice(index,1,Object.assign({},data.data));
-
-
-		},
-		addServerData:function(state,data){
-
-
-			for(var i=0;i<data.data.length;i++){
-
-				state.users.push(data.data[i])
-			}
-
-		},
-		getEditUser:function(state,data){
-			
-			var index=_.findIndex(state.users,{id:Number(data.data)});
-
-			state.editUser=Object.assign({},state.users[index])
-
+			--state.num
 		}
+	},
+	actions:{
 
+		addDelay:function(conext){
+
+
+			setTimeout(function(){
+
+				conext.commit("add")
+
+			},1000)
+
+		},
+
+		subscDelay:function(conext){
+
+			setTimeout(function(){
+
+				conext.commit("subsc")
+			},1000)
+		}
 
 	},
 	getters:{
 
-		userlen:function(state){
+			doubleNumber:function(state){
 
-			return state.users.length
-		}
+
+				return state.num*2
+			}
 
 	},
-	actions:{
 
-		loadServerData(context){
+	modules:{
 
-			var promise=$.get("./mockData/users.json")
-
-			promise.then(function(data){
-
-				context.commit({type:"addServerData",data:data})
-			})
-
-			return promise;
-
+		state:{
+				g:1
 		}
+
+
 	}
 
 
-})
+}
+
+var moduleB={
+	namespaced:true,
+
+	state:{
+			num:11
+	},
+	mutations:{
+
+		add:function(state){
+
+			///console.log('moduleB Add()')
+			++state.num
+		},
+		subsc:function(state){
+			//console.log('moduleB subsc()')
+			--state.num
+		},
+		setNumber:function(state,data){
+
+				state.num=data.data
+
+		}
+	},
+	actions:{
+
+		addDelay:function(conext){
+
+
+			setTimeout(function(){
+
+				conext.commit("add")
+
+			},1000)
+
+		},
+
+		subscDelay:function(conext){
+
+			setTimeout(function(){
+
+				conext.commit("subsc")
+			},1000)
+		}
+
+	},
+
+	getters:{
+
+		doubleNumber:function(state){
+
+			return state.num*2
+		}
+
+	}
+	
+
+
+}
+ export const store=new Vuex.Store({
+
+ 	modules:{
+
+ 		pageA:moduleA,
+ 		pageB:moduleB
+
+ 	}
+
+
+ })
 
 //export  const sqrt = Math.sqrt;
