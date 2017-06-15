@@ -1,88 +1,97 @@
-<template>
-		<div>
+<!-- <template>
+	<div>
 
-
-
-				<h3>
-					
-					{{num}}
-
-					<br/>
-
-					{{ $store.getters["pageA/doubleNumber"] }}
-
-				</h3>
-
-				<button class='btn btn-success' @click="$store.commit('pageA/subsc')">-</button>
-			
-				<button class='btn btn-success' @click="$store.commit('pageA/add')">+</button>
-
-
-				<button class='btn btn-success' @click="$store.dispatch('pageA/subscDelay')">- delay(1s)</button>
-			
-				<button class='btn btn-success'  @click="$store.dispatch('pageA/addDelay')">+ delay(1s)</button>
-
-				
-				<hr/>
-					
-
-
-<!-- 				{{$store.getters["pageB/doubleNumber"]}}
- -->
-				{{message}}
-				<br>
-
-				<input type="text" v-model.trim="message" v-focus.keyup="'aaa'" />
-				
-
-				{{now()}}
-
-
-				<mad-inner></mad-inner>
-
-		
-
-		</div>
+		<slot :test="test"></slot>
+	</div>
 </template>
-
+ -->
 <script>
-	
+	import Vue  from "vue";
+
+	//console.log((Vue.compile("<div><h1>3333</h1></div>").staticRenderFns)[0]())
 	export default {
+
+		render(createElement){
+
+				/*return createElement("div",{
+
+					'class': {
+					    foo: true,
+					    bar: true
+					  },
+
+					  attrs:{
+
+					  	guines:"das"
+					  },
+					  props:{
+
+					  		gear:1
+					  },
+					  domProps:{
+
+					  	innerHTML:this.test.h1
+					  },
+					  on:{
+					  		click:()=>{
+
+					  			//console.log(this)
+					  			this.test.h1=Math.random()*1000000
+					  			//this.test.h1="aaaa"
+					  		}
+
+					  }
+
+				})*/
+
+				return (<div>
+						<input type="text" v-model="m" on-input={ (e)=>{ this.clickHandler(e) } }/>
+
+							<div ref='table'></div>
+							<button type="button" onClick={ this.clickHandler } >button</button>
+
+					</div>)
+
+		},
+
+		props:[
+				"gear"
+		],
 		data:function(){
+
+
 			return {
-			}
-		},
-		components:{
+				test:{
 
-				"mad-inner":require("./mad-inner.component.vue")
-
-		},
-		directives:{
-			"focus":function(el,binding){
-				console.log(arguments);
+						h1:"i am from child h1",
+						h2:"i am from child h2",
+						h3:"i am from child h3"
+				},
+				m:1
 			}
 		},
 		computed:{
-			num:function(){
-				return this.$store.state.pageA.num;
-			},
-			doubleNumber:function(){
-				return 1
-			},
-			message:{
-				get:function(){
-					return this.$store.state.pageB.num;
-				},
-				set:function(value){
-					this.$store.commit({type:"pageB/setNumber",data:value});
+
+				mygear:function(){
+
+						return this.gear;
 				}
-			}
+
+		},
+		mounted:function(){	
+			
+
+			//console.log(this.$refs.table)
 		},
 		methods:{
-			now:function(){
-				return new Date()
-			}
+
+				clickHandler:function(e){
+
+					console.log(e)
+				}
 		}
+
+
 	}
 
 </script>
