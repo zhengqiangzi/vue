@@ -1,13 +1,12 @@
+var webpack=require("webpack")
 module.exports={
 
-	entry:{
-		index:"./index.js"
-
-	},
+	entry:{index:"./index.js"}
+	,
 	output:{
-		filename:"[name].js",
-		path:"./dist",
-		publicPath:"./dist"
+		filename:"bundle.js",
+		path:"/dist",
+		publicPath:"/dist"
 
 	},
 	resolve: {
@@ -32,6 +31,10 @@ module.exports={
 		      }
 		]
 	},
+	plugins:[
+
+		new webpack.HotModuleReplacementPlugin()
+	],
    devServer:{
 
       hot:true,
@@ -48,5 +51,5 @@ module.exports={
 
       host:'127.0.0.1'
 
-   },
+   }
 }

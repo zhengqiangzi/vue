@@ -10,7 +10,7 @@ var moduleA={
 
 	namespaced:true,
 	state:{
-			num:1
+			num:30
 	},
 	mutations:{
 

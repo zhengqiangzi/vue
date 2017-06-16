@@ -1,95 +1,122 @@
-<!-- <template>
-	<div>
+ <template>
+	<div class="javi">
+				
 
-		<slot :test="test"></slot>
+				<div>
+					{{$store.state.pageA.num}}  
+					
+				</div>
+				
+				<hr>
+
+				<button class='btn btn-success' @click="clickHandler">+(delay 1s)</button>
+				<button class='btn btn-success' @click="addNow">+</button>
+
+				<hr>
+
+				<button class='btn btn-success' @click="subHandler">-(delay 1s)</button>
+				<button class='btn btn-success' @click="subNow">-</button>
+
+
+
+				<hr>
+
+				<vue-form :state="formstate" @submit.prevent="onSubmit">
+					<validate tag="div">
+					      <span>Name *</span>
+					      <input v-model="model.name"  type="text" required name="name"  :my-custom-validator="model"/>
+
+					      <field-messages name="name">
+					        <div slot="required">Name is a required field</div>
+					        <div slot="my-custom-validator">not same </div>
+					      </field-messages>
+					</validate>
+
+					<validate tag="div">
+					      <span>repeat Name *</span>
+					      <input v-model="model.rname"  type="text" required name="rname"  :my-custom-validator="model"/>
+					      <field-messages name="rname">
+					        <div slot="required">Name is a required field</div>
+					        <div slot="my-custom-validator">not same </div>
+					      </field-messages>
+					</validate>
+
+
+					<validate tag="div">
+						
+							<div v-model="model.rawtext" name="rawtext" @click="changeHandler" bigger-than="0.5" >CHANGE  --  {{ model.rawtext }}</div>
+					
+					      <field-messages name="rawtext">
+					        <div slot="bigger-than">too small </div>
+					      </field-messages>
+					</validate>
+
+
+
+
+					</validate>
+
+
+		   		 	<button type="submit">Submit</button>
+
+		   		 	{{model}}
+					<hr>
+					{{formstate}}
+				</vue-form>
+
 	</div>
 </template>
- -->
+
 <script>
 	import Vue  from "vue";
 
-	//console.log((Vue.compile("<div><h1>3333</h1></div>").staticRenderFns)[0]())
 	export default {
 
-		render(createElement){
 
-				/*return createElement("div",{
-
-					'class': {
-					    foo: true,
-					    bar: true
-					  },
-
-					  attrs:{
-
-					  	guines:"das"
-					  },
-					  props:{
-
-					  		gear:1
-					  },
-					  domProps:{
-
-					  	innerHTML:this.test.h1
-					  },
-					  on:{
-					  		click:()=>{
-
-					  			//console.log(this)
-					  			this.test.h1=Math.random()*1000000
-					  			//this.test.h1="aaaa"
-					  		}
-
-					  }
-
-				})*/
-
-				return (<div>
-						<input type="text" v-model="m" on-input={ (e)=>{ this.clickHandler(e) } }/>
-
-							<div ref='table'></div>
-							<button type="button" onClick={ this.clickHandler } >button</button>
-
-					</div>)
-
-		},
-
-		props:[
-				"gear"
-		],
 		data:function(){
 
-
 			return {
-				test:{
+					formstate: {},
+					model:{
 
-						h1:"i am from child h1",
-						h2:"i am from child h2",
-						h3:"i am from child h3"
-				},
-				m:1
+						name:"",
+						rname:"",
+						rawtext:"2222"
+					}
 			}
-		},
-		computed:{
-
-				mygear:function(){
-
-						return this.gear;
-				}
-
-		},
-		mounted:function(){	
-			
-
-			//console.log(this.$refs.table)
 		},
 		methods:{
 
-				clickHandler:function(e){
+				clickHandler:function(){
 
-					console.log(e)
+					this.$store.dispatch("pageA/addDelay");
+					this.$emit("addevent")
+				},
+				addNow:function(){
+
+						this.$store.commit("pageA/add")
+				},
+				subHandler:function(){
+					this.$store.dispatch("pageA/subscDelay");
+
+
+				},
+				subNow:function(){
+
+						this.$store.commit("pageA/subsc")
+				},
+				onSubmit:function(){
+
+					console.log(this.formstate)
+				},
+				changeHandler:function(){
+
+					this.model.rawtext=Math.random()
+
+
 				}
 		}
+	
 
 
 	}
@@ -97,6 +124,25 @@
 </script>
 
 <style scoped>
-	
+
+	.javi{
+
+			background-color:rgba(123,123,123,.5);
+			padding:10px;
+			border-radius: 5px;
+			margin-top: 30px;
+
+
+	}
+
+	.javi *{
+			margin:10px;
+	}
+	.javi *:first-child{
+			color:green;
+			font-size:30px;
+			line-height: 23px;
+
+	}
 
 </style>
