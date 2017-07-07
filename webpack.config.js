@@ -1,3 +1,6 @@
+var path=require("path")
+var p=path.resolve()
+
 module.exports={
 
 	entry:{
@@ -5,9 +8,8 @@ module.exports={
 
 	},
 	output:{
-		filename:"[name].js",
-		path:"./dist",
-		publicPath:"./dist"
+		filename:"index.js",
+		path:p+"/dist/"
 
 	},
 	resolve: {
@@ -32,7 +34,7 @@ module.exports={
 		      }
 		]
 	},
-   devServer:{
+/*   devServer:{
 
       hot:true,
 
@@ -48,5 +50,5 @@ module.exports={
 
       host:'127.0.0.1'
 
-   },
+   },*/
 }

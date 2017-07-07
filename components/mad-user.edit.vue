@@ -1,9 +1,9 @@
 <template>
 	
- <form v-if="currentUser">
+ <form v-if="currentUser" class="col-sm-12">
         <div class="form-group">
           <label for="exampleInputEmail1">UserName</label>
-          <input type="text" class="form-control"  placeholder="Your name" v-model="currentUser.username">
+          <input type="text" class="form-control"  placeholder="Your name2" v-model="currentUser.username">
         </div>
       
 

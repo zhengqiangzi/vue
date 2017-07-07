@@ -23,6 +23,6 @@ var app = new Vue({
   },
   beforeCreate:function(){
 
-   // this.$store.dispatch("loadServerData")
+  //  this.$store.dispatch("loadServerData")
   }
 })

@@ -21,23 +21,14 @@
 	
 	<div id="app" style="width: 100%;">
 	
-		<mad-header></mad-header>
-		<!-- <mad-container></mad-container> -->
+  		<mad-header></mad-header>
+       <div class="container-fluid" >
+          <div class="row">
+              <router-view></router-view>
+          </div>
+      </div>
 
-
-   <div class="container-fluid" >
-    
-    <div class="row">
-      
-        <router-view></router-view>
-
-    </div>
-                  
-  </div>
-
-
-
-		<mad-footer></mad-footer>
+    	<mad-footer></mad-footer>
 
 	</div>
 

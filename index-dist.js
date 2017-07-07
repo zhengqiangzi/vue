@@ -23076,7 +23076,7 @@ var app = new Vue({
   methods: {},
   beforeCreate: function beforeCreate() {
 
-    //  this.$store.dispatch("loadServerData")
+    this.$store.dispatch("loadServerData");
   }
 });
 
@@ -35512,9 +35512,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.currentUser) ? _c('form', {
-    staticClass: "col-sm-12"
-  }, [_c('div', {
+  return (_vm.currentUser) ? _c('form', [_c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     attrs: {
@@ -35530,7 +35528,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "placeholder": "Your name2"
+      "placeholder": "Your name"
     },
     domProps: {
       "value": (_vm.currentUser.username)
