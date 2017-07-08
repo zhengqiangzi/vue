@@ -1,28 +1,41 @@
 window.$=window.jQuery=require("jquery");
 require("bootstrap");
-import  VueRouter       from           'vue-router';
-import  { router}       from           './router';
-import { store }        from           './store';
-var Vue=require("vue")
+import VueForm from 'vue-form';
+import Vue from 'vue';
+
+Vue.use(VueForm,{
+  validators:{
+
+    server:function(value,attrs){
+   
+     return $.get(attrs,{data:value,method:'POST'})/*then(function(){
+
+
+     })
+      return {result:false,msg:"serverError"}*/
+    }
+  }
+
+});
 var app = new Vue({
 
   el: '#app',
-  store:store,
-  router:router,
+  
   data:{
- 
-  },
-  components:{
-  	"mad-header":require("./components/mad-header.component.vue"),
-  	"mad-container":require("./components/mad-container.component.vue"),
-  	"mad-footer":require("./components/mad-footer.component.vue"),
+    formstate:{
+
+    },
+    model:{
+        name:null,
+        name2:null
+    }
   },
   methods:{
 
-  
-  },
-  beforeCreate:function(){
-
-  //  this.$store.dispatch("loadServerData")
+    onSubmit:function(){
+      
+    }
   }
+ 
+
 })
