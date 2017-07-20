@@ -21,49 +21,11 @@
 	
 	<div id="app" style="width: 100%;">
 
-
-    <div class="row">
-        <div class="col-sm-12">
-
-        	<vue-form :state="formstate" @submit.prevent="onSubmit" class="form">
-         
-            <validate tag="div" class="form-group">
-             
-              <span>Name *</span>
-            
-              <input v-model="model.name"    name="name123"   server="http://127.0.0.1:8080/v.json" required class="form-control" />
-             
-              <field-messages name="name123">
-                <div slot="server">123123123</div>
-                <div slot="required">required</div>
-              </field-messages>
-
-            </validate>
-
-         
-            <validate tag="div" class="form-group">
-             
-              <span>Name *</span>
-            
-              <input v-model="model.name2"    name="name1234"  server="http://127.0.0.1:8080/g.json" class="form-control" />
-             
-              <field-messages name="name1234">
-                <div slot="server">123123123</div>
-              </field-messages>
-
-            </validate>
+    <mad-feature></mad-feature>
+    <mad-edit-feature></mad-edit-feature>
 
 
 
-         
-            <button type="submit" class="btn btn-success">Submit</button>
-          </vue-form>
-      		
-    	</div>
-        
-        {{formstate}}   
-      
-    </div>
   </div>
 	<script type="text/javascript" src="./dist/index.js"></script>
 

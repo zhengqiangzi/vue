@@ -3,38 +3,31 @@ require("bootstrap");
 import VueForm from 'vue-form';
 import Vue from 'vue';
 
-Vue.use(VueForm,{
-  validators:{
-
-    server:function(value,attrs){
-   
-     return $.get(attrs,{data:value,method:'POST'})/*then(function(){
-
-
-     })
-      return {result:false,msg:"serverError"}*/
-    }
-  }
-
-});
 var app = new Vue({
 
+  provide:{
+    user:{
+
+      username:"johnny",
+      age:30,
+      sex:1,
+      address:"shanghai"
+    }
+  },
   el: '#app',
   
   data:{
-    formstate:{
 
-    },
-    model:{
-        name:null,
-        name2:null
-    }
   },
   methods:{
 
-    onSubmit:function(){
-      
-    }
+
+  },
+  components:{
+
+    "mad-feature":require("./components/feature.component.vue"),
+    "mad-edit-feature":require("./components/editFeature.component.vue")
+
   }
  
 
