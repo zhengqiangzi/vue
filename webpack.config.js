@@ -31,9 +31,29 @@ module.exports={
 		       	 use: [
 		         	 "babel-loader",
 		        	]
+		      },
+		       {
+				test: /\.css/,
+		       	 use: [
+		         	 "style-loader","css-loader",
+		        	]
+		      },
+		      {
+      		 	 test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+		       	 use: [
+		         	 "file-loader",
+		        	]
+		      },
+		      {
+       			 test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
+		       	 use: [
+		         	 "file-loader",
+		        	]
 		      }
 		]
-	},
+	}
+
+
 /*   devServer:{
 
       hot:true,
