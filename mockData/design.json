@@ -1,9 +1,4 @@
-import    Vue          from     'vue';
-import    Vuex         from     'vuex'
-
-import _ from "lodash"
-
-let _json={
+{
 
 	"type1":{
 		"title":"HTML5案例",
@@ -62,35 +57,3 @@ let _json={
 
 
 }
-Vue.use(Vuex)
-
- export const store=new Vuex.Store({
-
-	state:{
-
-		info:_json
-
-
-	},
-	mutations:{
-
-		
-
-
-	},
-
-	getters:{
-
-	
-
-	},
-
-	actions:{
-
-		
-	}
-
-
-})
-
-//export  const sqrt = Math.sqrt;
